@@ -5,5 +5,5 @@ require_once './common/init.php';
 
 
 $allTasks = $dao->getTasks();
-var_dump($allTasks);
+
 echo json_encode($allTasks);
