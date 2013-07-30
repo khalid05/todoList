@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TodoList jQuery</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="TodoList.js"></script>
+
+        <style>
+            .task-list-wrapper {
+/*                margin: 0;
+                padding: 0;*/
+            }
+
+            .task-list-wrapper .task-item {
+                list-style: decimal-leading-zero;
+                margin: 0;
+                padding: 0;
+            }
+
+            .task-list-wrapper .task-item.complete {
+                text-decoration: line-through;
+            }
+            .task-list-wrapper .task-item.uncomplete {
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>TodoList</h1>
+        <div id="container"></div>
+    </body>
+</html>
