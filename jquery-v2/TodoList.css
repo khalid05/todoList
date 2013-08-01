@@ -1,0 +1,40 @@
+.task-list-wrapper {
+    margin: 0;
+    padding: 0;
+}
+
+.task-list-wrapper .task-item {
+    height: 25px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    font-family: sans-serif;
+    font-size: 15px;
+}
+
+.task-list-wrapper .task-item .task-name {
+    margin-left: 2px;
+}
+.task-list-wrapper .task-item.complete .task-name {
+    text-decoration: line-through;
+}
+.task-list-wrapper .task-item.uncomplete {
+    cursor: pointer;
+}
+
+.task-form {
+    display: none;
+}
+.task-form input {
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    border: 1px solid grey;
+}
+.task-item.edit-in-progress .task-form  {
+    display: inline;
+}
+.task-item.edit-in-progress .task-name  {
+    display: none;
+}

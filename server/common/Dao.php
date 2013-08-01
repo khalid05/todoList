@@ -38,10 +38,41 @@ class Dao
         $result = $queryStatement->execute();
 
         if (FALSE === $result) {
-            throw new Exception('Une erreur est survenue durant la requête : ' . $queryStatement->errorInfo());
+            throw new \Exception('Une erreur est survenue durant l\'exécution de la requête : ' . $queryStatement->errorInfo());
         }
 
         return $result;
+    }
+
+    public function saveTask($idTask, $name, $status = 0)
+    {
+        if (null !== $idTask && FALSE === empty($idTask)) {
+            $query = sprintf('UPDATE tasks SET name = :name WHERE idtask = :idtask;');
+            $queryStatement = $this->database->prepare($query);
+
+            $queryStatement->bindParam('idtask', $idTask);
+            $queryStatement->bindParam('name', $name);
+        } else {
+            $query = sprintf('INSERT INTO tasks (idtask, name, status) VALUES (NULL, :name, :status);');
+            $queryStatement = $this->database->prepare($query);
+
+            $queryStatement->bindParam('name', $name);
+            $queryStatement->bindParam('status', $status);
+        }
+
+        $result = $queryStatement->execute();
+
+        if (FALSE === $result) {
+            throw new \Exception('Une erreur est survenue durant l\'exécution de la requête : ' . json_encode($queryStatement->errorInfo()));
+        }
+
+        if (null !== $idTask && FALSE === empty($idTask)) {
+            $id = $idTask;
+        } else {
+            $id = $this->database->lastInsertId();
+        }
+
+        return (int) $id;
     }
 
 }
